@@ -46,9 +46,9 @@ async def main():
 
     # --- THIS LINE IS CHANGED ---
     # Generate repository names from myrepo001 to myrepo100
-    repo_names = [f"quay316repo{i:03}" for i in range(1, 1001)]
+    repo_names = [f"quay316repo{i:03}" for i in range(1, 501)]
 
-    connector = aiohttp.TCPConnector(limit=50,ssl=False)
+    connector = aiohttp.TCPConnector(limit=20,ssl=False)
     async with aiohttp.ClientSession(connector=connector) as session:
         tasks = [create_repo(session, name) for name in repo_names]
         await asyncio.gather(*tasks)
